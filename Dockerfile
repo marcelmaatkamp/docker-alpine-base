@@ -1,10 +1,10 @@
-FROM gliderlabs/alpine:edge
+FROM alpine:edge
 MAINTAINER Marcel Maatkamp <m.maatkamp@gmail.com>
 
-ADD apk /etc/apk
-RUN apk-install bash wget zip
+RUN apk add --update bash wget zip && \
+    rm /var/cache/apk/* && \
+    mkdir /projects
 
-RUN mkdir /projects
 WORKDIR /projects
 
 CMD ["bash"]
